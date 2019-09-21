@@ -17,7 +17,7 @@ node{
            sh "docker push santhoshadari/spring-boot-mongo:1.0.0"
 	}
 	stage("remove <none> images"){
-	        sh "docker rmi $(sudo docker images --filter "dangling=true" -q --no-trunc)"
+	        sh "docker rmi ${sudo docker images --filter "dangling=true" -q --no-trunc}"
 	        sh "docker images -a | grep none | awk '{ print ${3} }' | xargs docker rmi -f"
 	}
  }	
