@@ -10,6 +10,13 @@ node{
 	stage("Build Dokcer Image") {
          sh "docker build -t santhoshadari/spring-boot-mongo:1.0.0 ."
     }
+	stage('PUSH Docker image'){
+          steps {
+		   withCredentials([string(credentialsId: 'docker-pwd', variable: 'DockerHubloginpwd')]) {
+           sh label: '', script: "docker login -u santhoshadari -p ${DockerHubloginpwd}" }
+           sh "docker push santhoshadari/spring-boot-mongo:1.0.0"
+		   }
+	}
  }	
 /*
 pipeline{
