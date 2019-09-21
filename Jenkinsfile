@@ -19,7 +19,7 @@ node{
 	stage("remove <none> images"){
 		    sh """
 			  docker images -a \
-     			  | grep <none> \
+     			  | grep "<none>" \
 				  | awk '{ print \$3 }' \ 
 				  | xargs docker rmi -f
 				"""  
