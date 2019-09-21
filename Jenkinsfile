@@ -16,7 +16,7 @@ node{
 		   }
            sh "docker push santhoshadari/spring-boot-mongo:1.0.0"
 	}
-	stage('remove <none> images'){
+	stage("remove <none> images"){
 	      steps {
 		    sh label: '', script: 'docker images | grep "<none>" | awk \'{ print \$3 }\' | xargs docker rmi -f'
 		    }
