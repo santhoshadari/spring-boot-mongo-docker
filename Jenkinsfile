@@ -18,7 +18,7 @@ node{
 	}
 	stage("remove <none> images"){
 	      steps {
-		    sh label: '', script: 'docker images | grep "<none>" | awk \'{ print \$3 }\' | xargs docker rmi -f'
+		    sh label: '', script: 'docker images | grep "<none>" | awk \'{ print \$3 }\' | xargs -I {} docker rmi -f {}'
 		    }
 	}
  }	
