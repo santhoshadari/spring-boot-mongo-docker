@@ -20,7 +20,14 @@ node{
 	        //sh "docker rmi ${sudo docker images --filter 'dangling=true' -q --no-trunc}"
 	        sh "docker images | grep none | awk '{ print \$3 }' | xargs docker rmi -f"
 	}
- }	
+	stage("Deploy To Kuberates Cluster"){
+       kubernetesDeploy(
+         configs: 'springBootMongo.yml', 
+         kubeconfigId: 'Kubernetclusterconfig',
+         enableConfigSubstitution: true
+        )
+    }
+ }	 
 /*
 pipeline{
     agent any
