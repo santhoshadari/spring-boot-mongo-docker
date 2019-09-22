@@ -18,7 +18,7 @@ node{
 	}
 	stage("remove <none> images"){
 	        //sh "docker rmi ${sudo docker images --filter 'dangling=true' -q --no-trunc}"
-	        sh "docker images | grep none | awk '{ print ${3} }' | xargs docker rmi -f"
+	        sh "docker images | grep none | awk '{ print \$3 }' | xargs docker rmi -f"
 	}
  }	
 /*
